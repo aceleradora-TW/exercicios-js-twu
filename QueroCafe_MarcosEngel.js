@@ -9,10 +9,8 @@ function queroCafe(mascada, precos) {
   for (var i = 0; i < precos.length; i++) {
     if (precos[i] <= mascada) {
       console.log(precos[i] + ",")
-    } else {
-
     }
-}
+  }
 }
 
 queroCafe(3.14 , precos);
