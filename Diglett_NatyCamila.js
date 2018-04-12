@@ -9,8 +9,7 @@ function diglettDig(){
         else if(i %5 === 0 && i %3 !== 0){
           console.log('Trio, Trio ,Trio')
         }
-        else if(i %5 === 0 && i %3 === 0){
-          console.log('Diglett Dig , Trio, Trio ,Trio')}
+
         else{
             console.log(i)
 }
