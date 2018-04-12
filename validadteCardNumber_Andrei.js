@@ -34,11 +34,11 @@ function validFirtDigits (card, digits) {
 }
 
 function validLuhnAlgorithm (card) {
-  let arrayDeChar = card.split('')
+  const arrayDeChar = card.split('')
   let result = 0
 
   arrayDeChar.forEach((charNum, index) => {
-    num = parseInt(charNum)
+    let num = parseInt(charNum)
     if (index % 2 == 0)
       num *= 2
 
@@ -57,11 +57,10 @@ function validCardType(card, cardType) {
 
 function validateCardNumber (card) {
   const cardNumber = card.split(' ').join('')
-  let finalMessage = 'CardType Not Accepted by us!'
+  let finalMessage = 'CardType Not Accepted by us or Number is Invalid'
   Object.values(cardTypes).some((cardType) => {
-    (validCardType(cardNumber, cardType) && validLuhnAlgorithm(cardNumber))
-    ? finalMessage = `CardType Accepted: ${cardType.name}. Card Number also Valid!`
-    : finalMessage
+    if(validCardType(cardNumber, cardType) && validLuhnAlgorithm(cardNumber))
+      finalMessage = `CardType Accepted: ${cardType.name}. Card Number also Valid!`
   })
   console.log(finalMessage)
 }
