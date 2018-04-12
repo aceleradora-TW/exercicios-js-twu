@@ -34,10 +34,10 @@ function validFirtDigits (card, digits) {
 }
 
 function validLuhnAlgorithm (card) {
-  let splitado = card.split('')
+  let arrayDeChar = card.split('')
   let result = 0
 
-  splitado.forEach((charNum, index) => {
+  arrayDeChar.forEach((charNum, index) => {
     num = parseInt(charNum)
     if (index % 2 == 0)
       num *= 2
