@@ -17,7 +17,7 @@ const cardTypes = {
   visa: {
     name: 'Visa',
     inicialDigits: 4,
-    length: [13,15]
+    length: [13,16]
   }
 }
 
@@ -55,21 +55,15 @@ function validCardType(card, cardType) {
          : false
 }
 
-function main (card) {
+function validateCardNumber (card) {
   const cardNumber = card.split(' ').join('')
-  let finalMessage = ''
-  Object.values(cardTypes).forEach((cardType) => {
-    validCardType(cardNumber, cardType)
-    ? finalMessage = `CardType Accepted: ${cardType.name}`
-    : finalMessage = 'CardType Not Accepted by us!'
-
-    validLuhnAlgorithm(cardNumber)
-    ? finalMessage += '\nCard Number Valid'
-    : finalMessage += '\nCard Number Invalid'
+  let finalMessage = 'CardType Not Accepted by us!'
+  Object.values(cardTypes).some((cardType) => {
+    (validCardType(cardNumber, cardType) && validLuhnAlgorithm(cardNumber))
+    ? finalMessage = `CardType Accepted: ${cardType.name}. Card Number also Valid!`
+    : finalMessage
   })
-
-
-  console.log(finalMessage);
+  console.log(finalMessage)
 }
 
-main('4408 0412 3456 7893')
+validateCardNumber('5108 0412 3456 7893')
